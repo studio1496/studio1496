@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>studio1496</title>
+        <meta name="description"content="石黒　颯一朗/Soichiro Ishiguro">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     <!--リセットCSS-->
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+     <!--オリジナル<CSS-->
+        <link rel="stylesheet" href="css/style.css">
+
+
+    </head>
+    <body>
+        <header class="page-header">
+            <h1 class="align-center">
+                <a href="index.html">studio1496</a>
+            </h1>
+            
+            <nav>
+                <ul class="main-nav font-english" id="main-nav">
+                    <li class="close-btn" id="close-btn">×</li>
+                    <li><a href="works.html">Works</a></li>
+                    <li><a href="texts.html">Texts</a></li>
+                    <li><a href="cameraroll.html">Camera Roll</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+
+                <div class="hamburger" id="hamburger">+</div>
+            </nav>
+        </header>
+
+        <section class="essay">
+            <h2 class="heading-eassay">スープ</h2>
+             <div class="quote">
+                <i>
+                スープ（仏: soupe、英: soup、独: Suppe）は、肉･野菜･魚介類などを煮込んで作られる、
+                水分を多く含む料理の総称である。 広義には、日本における汁（しる）･汁物（しるもの）、
+                または羹（あつもの）･吸物（すいもの）と呼ばれる料理のほか、出汁（だし）やつゆといった
+                料理構成要素をも包含する。しかし、狭義には欧風の汁物料理を指して言う。
+                漢字では数夫、肉汁などの用例が見られる。スープは本質的にソースと共通する
+                部分が多いが、風味の濃縮度がやや低く、単体で食べる点が異なる。
+                </i>
+                <p class="source">
+                  引用：<a href="https://ja.wikipedia.org/wiki/スープ" target="_blank">Wikipedia</a>
+                </p>
+             </div>
+
+        </section>
+       
+        <script>
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('main-nav');
+        const closeBtn = document.getElementById('close-btn');
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        closeBtn.addEventListener('click', () => {
+            nav.classList.remove('active');
+        });
+        </script>
+    </body>
+</html>
