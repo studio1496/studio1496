@@ -1,0 +1,246 @@
+@charset "UTF-8";
+/* 共通部分
+----------------*/
+html{
+    font-size:100%;
+}
+body{
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", sans-serif; line-height: 1.7;
+    color: gray;
+    background-color: #ffff;
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+}
+/* レイアウト */
+.align-senter{
+    text-align: center;
+}
+
+/* ヘッダー
+----------------------------*/
+.page-header{
+    padding-top: 1rem;
+}
+.align-center a{
+    font-family: "Meiryo";
+    letter-spacing: .5rem;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    color: gray;
+}
+.main-nav {
+    display: flex;
+    justify-content: right;
+    padding-right: 60px;
+    gap: 2.5rem;
+    font-size: 1.5rem;
+    list-style: none;
+}
+.main-nav a{
+    display: inline-block;
+    padding: 6px 12px;
+    font-family: "Meiryo";
+    letter-spacing: 0.1em;
+    color: gray;
+    text-decoration: none;
+    transition: 0.4s ease;
+}
+.main-nav a:hover {
+    background-color: blue;
+    color: blue;
+}
+/* ハンバーガー（PCでは非表示） */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* スマホ用 */
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 8px;
+    z-index: 1001;
+    font-size:2rem;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+  /* クリック後の状態（回転） */
+  .hamburger.active {
+      transform: rotate(45deg); /* ← ＋ が × に近い形になる */
+  }
+
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%; /* ← 最初は画面外に隠す */
+    width: 100%;
+    height: 100vh;
+    background: navy;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 80px;
+    padding-left: 20px;
+    text-align: left;
+    transition: right 0.25s ease; /* ← スライドアニメーション */
+    z-index: 1000;
+  }
+
+  .main-nav.active {
+    right: 0; /* ← スライドイン */
+  }
+
+  /* × ボタン */
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    text-align: right;
+    padding: 0;
+    cursor: pointer;
+    color: gray;
+  }
+  /* × ボタンは最初は非表示 */
+  .close-btn {
+    display: none;
+  }
+
+  /* メニューが開いたら × を表示 */
+  .main-nav.active .close-btn {
+    display: block;
+  }
+
+  /* メニューが開いたらハンバーガーを隠す */
+  .main-nav.active ~ .hamburger {
+    display: none;
+  }
+
+  .essay{
+    max-width: 736px;
+    padding: 0 1.5rem;
+    margin: 3rem auto 0;
+    font-family: "Yu Gothic Bold", sans-serif;
+    font-weight:500;
+    color: blue;
+  }
+  .essay i {
+    margin-bottom: 3rem;
+    color: blue;
+    font-family: "Yu Gothic Medium", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .quote {
+    border-left: .1px solid gray;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+  }
+  .source{
+    font-size: .8rem;
+    font-style: normal;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* スマホは1列 */
+    gap: 15px;
+    padding: 1rem;
+  }
+
+  .gallery img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* 正方形 */
+    object-fit: cover;   /* トリミングして正方形に収める */
+    display: block;
+  }
+
+  .gallery .item{
+    position: relative;
+  }
+  
+  .gallery .title{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    padding: 0.05em .2em;
+    background: lightgray;
+    color: blue;
+    font-size: 1rem;
+    font-family: "meiryo";
+    letter-spacing: 0.1em;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 2s ease;
+    pointer-events: none; /* クリックの邪魔をしない */
+  }
+
+  .gallery .title.show{
+    opacity: 3;
+  }
+
+  @media (min-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  .works-title{
+    color: navy;
+    font-family: "Times New Roman";
+    margin: 0;
+    padding: 1rem 1rem 0.25rem 1rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+  .work-n-title{
+    color: navy;
+    font-family: "Meiryo";
+    margin: 0;
+    padding: 1rem 1rem 0.25rem 1rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+  }
+
+  /*↓↓各作品ページについて*/
+  .crop-1_85-1 {
+    aspect-ratio: 1.85 / 1; /* ← 比率を指定 */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow: hidden;       /* ← 枠からはみ出した部分を隠す */
+  }
+  .crop-1_85-1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* ← 枠いっぱいに拡大してトリミング */
+  }
+  .work-image {
+    width: 100%;
+    max-width: 600%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: auto;
+    object-fit: contain;
+    background-color: #fff;
+  }
+  .work-text {
+    max-width: 600px;
+    margin: 1.5rem auto;
+    line-height:1.8;
+    padding: 0 1rem;
+    font-family: "Meiryo";
+    color:black;
+  }
+}
