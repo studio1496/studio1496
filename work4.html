@@ -11,55 +11,100 @@
      <!--オリジナル<CSS-->
         <link rel="stylesheet" href="css/style.css">
 
+       <link rel="icon" type="image/png" href="favicon.png">
+ 
 
     </head>
     <body>
-        <header class="page-header">
-            <h1 class="align-center">
-                <a href="index.html">studio1496</a>
-            </h1>
-            
-            <nav>
-                <ul class="main-nav font-english" id="main-nav">
-                    <li class="close-btn" id="close-btn">×</li>
-                    <li><a href="works.html">Works</a></li>
-                    <!--
-                    <li><a href="texts.html">Texts</a></li>
-                    -->
-                    <!--
-                    <li><a href="cameraroll.html">Camera Roll</a></li>
-                    -->
-                    <!--
-                    <li><a href="about.html">About</a></li>
-                    -->
-                </ul>
+        <div class="header-container">
+            <header class="page-header">
+                <h1 class="align-center">
+                    <a href="index.html">studio1496</a>
+                </h1>
+                
+                <span class="title" id="work-title">pattern</span>
 
-                <div class="hamburger" id="hamburger">+</div>
-            </nav>
-        </header>
+                <nav>
+                    <ul class="main-nav font-english" id="main-nav">
+                        <li class="close-btn" id="close-btn">×</li>
+                        <li><a href="works.html">Works</a></li>
+                        <!--
+                        <li><a href="texts.html">Texts</a></li>
+                        -->
+                        <!--
+                        <li><a href="cameraroll.html">Camera Roll</a></li>
+                        -->
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+
+                    <div class="hamburger" id="hamburger">+</div>
+                </nav>
+            </header>
+        </div>
 
         <main>
-            <h2 class="work-n-title">
-                pattern
-            </h2>
-            <div class="work-text">
-                テキスト準備中
+            <div class="double-slider">
+
+                <div class="slider-images">
+                    <img id="left-img" src="images/work4/img1.jpg" loading="lazy">
+                    <img id="right-img" src="images/work4/img2.jpg" loading="lazy">
+                </div>
+
+                <div class="slider-nav">
+                    <span class="close-btn2">
+                        <a href="works.html">×</a>
+                    </span>
+                    <div class="dots" id="dots"></div>
+                    <span class="next-btn" id="next-btn">＋</span>
+                </div>
+
             </div>
-                <img src="images/work4/img1.jpg" class="work-image" loading="lazy">
-                <img src="images/work4/img2.jpg" class="work-image" loading="lazy">
-                <img src="images/work4/img3.jpg" class="work-image" loading="lazy">
-                <img src="images/work4/img4.jpg" class="work-image" loading="lazy">
-                <img src="images/work4/img5.png" class="work-image" loading="lazy">
-                <img src="images/work4/img6.png" class="work-image" loading="lazy">
-                <img src="images/work4/img7.png" class="work-image" loading="lazy">
-                <img src="images/work4/img8.png" class="work-image" loading="lazy">
-                <img src="images/work4/img9.jpg" class="work-image" loading="lazy">
-                <img src="images/work4/img10.png" class="work-image" loading="lazy">
-                <img src="images/work4/img11.png" class="work-image" loading="lazy">
+
+            <div id="fullscreen-modal" class="fullscreen-modal">
+                <img id="fullscreen-img" src="">
+            </div>
+            <!---------------作品タイトルスライドパネル-------------->
+            <div id="detail-panel" class="detail-panel">
+                <div class="detail-content">
+                    <div class="detail-text">
+                        <h2>pattern</h2>
+                        <p>
+                            テキスト準備中。
+                            敷地 : 特定の敷地はなし
+                            用途 : 住宅
+                            修士一年前期
+                            備考 : コンペ提出作品
+                        </p>
+                    </div>
+                    <!---------------スライドパネル写真ギャラリー-------------->
+                    <div class="detail-gallery">
+                        <img src="images/work4/thumb/img1.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img2.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img3.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img4.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img5.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img6.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img7.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img8.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img9.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img10.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img11.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img12.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img13.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img14.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img15.jpg" loading="lazy">
+                        <img src="images/work4/thumb/img16.jpg" loading="lazy">
+                        <!-- 必要なだけ追加 -->
+                    </div>
+                    <!---------------スライドパネル写真ギャラリー-------------->
+                </div>
+            </div>
+            <div id="panel-overlay" class="panel-overlay"></div>
+            <!------------------------------------------------------->
         </main>
     </body>
     
- <script>
+    <script>
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('main-nav');
         const closeBtn = document.getElementById('close-btn');
@@ -70,5 +115,257 @@
             nav.classList.remove('active');
         });
     </script>
-  </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+
+        // ★ セットを番号で定義（ここだけ編集すればOK）
+        const imageSets = [
+            [1,2],
+            [3,2],
+            [3,4],
+            [5,4],
+            [5,6],
+            [7,6],
+            [7,8],
+            [9,8],
+            [9,10],
+            [11,10],
+            [11,12],
+            [13,12],
+            [13,14],
+            [15,14],
+            [15,16],
+            [1,16],
+        ];
+
+        const sets = imageSets.map(([l, r]) => [
+            `images/work4/img${l}.jpg`, // ← ★変更箇所
+            `images/work4/img${r}.jpg`
+        ]);
+
+        let index = 0;
+
+        const leftImg = document.getElementById("left-img");
+        const rightImg = document.getElementById("right-img");
+        const dots = document.getElementById("dots");
+        const nextBtn = document.getElementById("next-btn");
+
+        // ドット生成
+        sets.forEach(() => {
+            const dot = document.createElement("span");
+            dots.appendChild(dot);
+        });
+
+        // ★ ドットは2つずつ進み、最後はループする
+        const updateDots = () => {
+            const allDots = dots.querySelectorAll("span");
+            const total = allDots.length;
+
+            const active1 = index % total;
+            const active2 = (index + 1) % total;
+
+            allDots.forEach((d, i) => {
+            d.classList.toggle("active", i === active1 || i === active2);
+            });
+        };
+
+        nextBtn.addEventListener("click", () => {
+            index = (index + 1) % sets.length;
+            updateImages();
+            updateDots();
+        });
+
+        const updateImages = () => {
+            const newLeft = sets[index][0];
+            const newRight = sets[index][1];
+
+            const currentLeft = leftImg.src.split("/").pop();
+            const currentRight = rightImg.src.split("/").pop();
+
+            const nextLeft = newLeft.split("/").pop();
+            const nextRight = newRight.split("/").pop();
+
+            const DELAY = 700; // ← ★ここで「間」を調整（ms）
+
+            // 左が変わるとき
+            if (currentLeft !== nextLeft) {
+                leftImg.style.opacity = "0"; // まず透明にする（背景だけになる）
+
+                setTimeout(() => {
+                const preload = new Image();
+                preload.src = newLeft;
+
+                preload.onload = () => {
+                    leftImg.src = newLeft;     // 読み込み完了後に差し替え
+                    leftImg.style.opacity = "1"; // ここで初めて表示
+                };
+                }, DELAY); // ← ★透明のまま待つ時間
+            }
+
+            // 右が変わるとき
+            if (currentRight !== nextRight) {
+                rightImg.style.opacity = "0";
+
+                setTimeout(() => {
+                const preload = new Image();
+                preload.src = newRight;
+
+                preload.onload = () => {
+                    rightImg.src = newRight;
+                    rightImg.style.opacity = "1";
+                };
+                }, DELAY);
+            }
+        };
+
+
+        updateDots();
+
+        const modal = document.getElementById("fullscreen-modal");
+        const modalImg = document.getElementById("fullscreen-img");
+        
+        // 左画像クリックでフルスクリーン
+        leftImg.addEventListener("click", () => {
+            modal.style.display = "flex";
+
+            modalImg.classList.remove("show"); // 透明に戻す
+            modalImg.src = leftImg.src;
+
+            requestAnimationFrame(() => {
+                modalImg.classList.add("show"); // フェードイン
+            });
+        });
+
+        // 右画像クリックでフルスクリーン
+        rightImg.addEventListener("click", () => {
+            modal.style.display = "flex";
+
+            modalImg.classList.remove("show");
+            modalImg.src = rightImg.src;
+
+            requestAnimationFrame(() => {
+                modalImg.classList.add("show");
+            });
+        });
+
+        // 画像クリックで拡大・縮小（閉じるイベントを止める）
+        modalImg.addEventListener("click", (e) => {
+            e.stopPropagation();
+
+            const rect = modalImg.getBoundingClientRect();
+
+            // クリック位置（画像内の相対座標）
+            const offsetX = e.clientX - rect.left;
+            const offsetY = e.clientY - rect.top;
+
+            // 画像内の割合（0〜1）
+            const xRatio = offsetX / rect.width;
+            const yRatio = offsetY / rect.height;
+
+            const scale = 2; // 拡大倍率
+
+            if (!modalImg.classList.contains("zoomed")) {
+                // 拡大する時の補正
+                const moveX = (xRatio - 0.5) * rect.width * (scale - 1);
+                const moveY = (yRatio - 0.5) * rect.height * (scale - 1);
+
+                modalImg.style.transform = `translate(${-moveX}px, ${-moveY}px) scale(${scale})`;
+                modalImg.classList.add("zoomed");
+            } else {
+                // 元に戻す
+                modalImg.style.transform = "";
+                modalImg.classList.remove("zoomed");
+            }
+        });
+
+        // クリックで閉じる（元の動き）
+        modal.addEventListener("click", () => {
+            modal.style.display = "none";
+            modalImg.classList.remove("show"); // 次回のために透明に戻す
+        });
+
+        // ----------------------作品タイトルスライドパネル---------------------------
+        const titleBtn = document.getElementById("work-title");
+        const detailPanel = document.getElementById("detail-panel");
+        const overlay = document.getElementById("panel-overlay");
+
+        titleBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            detailPanel.classList.add("show");
+            overlay.style.display = "block";
+
+            // ★ タイトルを青く固定
+            titleBtn.classList.add("active");
+        });
+
+        overlay.addEventListener("click", () => {
+            detailPanel.classList.remove("show");
+            overlay.style.display = "none";
+
+            // ★ 青固定を解除
+            titleBtn.classList.remove("active");
+        });
+
+        overlay.addEventListener("click", () => {
+            detailPanel.classList.remove("show");
+            overlay.style.display = "none";
+        });
+
+        // 事前読み込み
+        const galleryImages = [
+            "images/work4/thumb/img1.jpg",
+            "images/work4/thumb/img2.jpg",
+            "images/work4/thumb/img3.jpg",
+            "images/work4/thumb/img4.jpg",
+            "images/work4/thumb/img5.jpg",
+            "images/work4/thumb/img6.jpg",
+            "images/work4/thumb/img7.jpg",
+            "images/work4/thumb/img8.jpg",
+            "images/work4/thumb/img9.jpg",
+            "images/work4/thumb/img10.jpg",
+            "images/work4/thumb/img11.jpg",
+            "images/work4/thumb/img12.jpg",
+            "images/work4/thumb/img13.jpg",
+            "images/work4/thumb/img14.jpg",
+            "images/work4/thumb/img15.jpg",
+            "images/work4/thumb/img16.jpg",
+            ];
+
+            galleryImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
+            });
+        // ----------------------------事前読み込み
+
+        // detail-gallery の画像クリックでスライダーへジャンプ
+        document.querySelectorAll(".detail-gallery img").forEach((thumb) => {
+            thumb.addEventListener("click", () => {
+                const clickedSrc = thumb.src.split("/").pop(); // ファイル名だけ取得
+
+                // どのセットに含まれているか探す
+                const targetIndex = sets.findIndex(([left, right]) => {
+                    return left.includes(clickedSrc) || right.includes(clickedSrc);
+                });
+
+                if (targetIndex !== -1) {
+                    index = targetIndex;   // スライダーの現在位置を更新
+                    updateImages();        // 画像更新
+                    updateDots();          // ドット更新
+                }
+
+                // スライドパネルを閉じる（任意）
+                detailPanel.classList.remove("show");
+                overlay.style.display = "none";
+
+                // ★ ここが重要：青固定を解除
+                titleBtn.classList.remove("active");
+
+            });
+        });
+        //----------------画像クリックでスライダーへジャンプ
+
+        // -----------------------------------------------------------------------
+
+        });
+    </script>
 </html>

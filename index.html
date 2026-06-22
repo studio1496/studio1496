@@ -11,51 +11,42 @@
      <!--オリジナル<CSS-->
         <link rel="stylesheet" href="css/style.css">
 
+        <link rel="icon" type="image/png" href="favicon.png">
 
     </head>
     <body>
-        <header class="page-header">
-            <h1 class="align-center">
-                <a href="index.html">studio1496</a>
-            </h1>
-            
-            <nav>
-                <ul class="main-nav font-english" id="main-nav">
-                    <li class="close-btn" id="close-btn">×</li>
-                    <li><a href="works.html">Works</a></li>
-                    <!--
-                    <li><a href="texts.html">Texts</a></li>
-                    -->
-                    <!--
-                    <li><a href="cameraroll.html">Camera Roll</a></li>
-                    -->
-                    <!--
-                    <li><a href="about.html">About</a></li>
-                    -->
-                </ul>
+        <div class="header-container">
+            <header class="page-header">
+                <h1 class="align-center">
+                    <a href="index.html">studio1496</a>
+                </h1>
+                
+                <span class="title" id="work-title">
+                    <a href="index.html">Hello</a>
+                </span>
 
-                <div class="hamburger" id="hamburger">+</div>
-            </nav>
-        </header>
+                <nav>
+                    <ul class="main-nav font-english" id="main-nav">
+                        <li class="close-btn" id="close-btn">×</li>
+                        <li><a href="works.html">Works</a></li>
+                        <!--
+                        <li><a href="texts.html">Texts</a></li>
+                        -->
+                        <!--
+                        <li><a href="cameraroll.html">Camera Roll</a></li>
+                        -->
+                        <li><a href="about.html">About</a></li>
+                    </ul>
 
-        <section class="essay">
-            <h2 class="heading-eassay">スープ</h2>
-             <div class="quote">
-                <i>
-                スープ（仏: soupe、英: soup、独: Suppe）は、肉･野菜･魚介類などを煮込んで作られる、
-                水分を多く含む料理の総称である。 広義には、日本における汁（しる）･汁物（しるもの）、
-                または羹（あつもの）･吸物（すいもの）と呼ばれる料理のほか、出汁（だし）やつゆといった
-                料理構成要素をも包含する。しかし、狭義には欧風の汁物料理を指して言う。
-                漢字では数夫、肉汁などの用例が見られる。スープは本質的にソースと共通する
-                部分が多いが、風味の濃縮度がやや低く、単体で食べる点が異なる。
-                </i>
-                <p class="source">
-                  引用：<a href="https://ja.wikipedia.org/wiki/スープ" target="_blank">Wikipedia</a>
-                </p>
-             </div>
+                    <div class="hamburger" id="hamburger">+</div>
+                </nav>
+            </header>
+        </div>
 
-        </section>
-       
+        <main class="container">
+            <div id="random-images"></div>
+        </main>
+
         <script>
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('main-nav');
@@ -66,6 +57,67 @@
         closeBtn.addEventListener('click', () => {
             nav.classList.remove('active');
         });
+
+        /*--------ランダム写真配置--------------*/
+        const imageList = [
+            "images/index/img1.jpg",
+            "images/index/img2.jpg",
+            "images/index/img3.jpg",
+            "images/index/img4.jpg",
+            "images/index/img5.jpg",
+            "images/index/img6.jpg",
+            "images/index/img7.jpg",
+            "images/index/img8.jpg",
+            "images/index/img9.jpg",
+            "images/index/img10.jpg",
+            "images/index/img11.jpg",
+            "images/index/img12.jpg",
+            "images/index/img13.jpg",
+            "images/index/img14.jpg",
+        ];
+
+        // 配列をシャッフル
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        const selected = shuffle([...imageList]).slice(0, 5); // ランダム5枚
+        const container = document.getElementById("random-images");
+
+        selected.forEach((src, index) => {
+            setTimeout(() => {
+                const img = document.createElement("img");
+                img.src = src;
+                img.classList.add("random-img");
+
+                // ★ ランダムサイズ（360〜720px）
+                const size = 360 + Math.random() * 180;
+                img.style.width = size + "px";
+
+                 // ★ 画面サイズを取得
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+
+                // ★ 画像が画面外に出ないように位置を計算
+                const maxLeft = vw - size - 20; // 20pxは余白
+                const maxTop = vh - size - 20;
+
+                const left = Math.random() * maxLeft;
+                const top = Math.random() * maxTop;
+
+                img.style.left = left + "px";
+                img.style.top = top + "px";
+
+                container.appendChild(img);
+            }, index * 500); // ← 0.3秒ごとに“パッ”と出る
+        });
+        /*------------------------------------------------------*/
+
         </script>
+
     </body>
 </html>
