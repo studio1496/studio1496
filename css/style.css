@@ -24,11 +24,6 @@ img{
   --header-height: 80px;
 }
 
-html, body {
-    height: 100%;
-    overflow: hidden; /* ← スクロール禁止 */
-}
-
 /* ヘッダー
 ----------------------------*/
 /* =========================
@@ -198,9 +193,10 @@ a:visited {
 .about-img-fixed {
    position: fixed;
     bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 1rem 2rem;
+    left: 50%;                 /* 画面の中央に基準を置く */
+    transform: translateX(-50%); /* 要素自身の幅の半分だけ左に戻す */
+    width: 80%;
+    padding: 1rem 3rem;
     box-sizing: border-box;
     z-index: -1;
 }
@@ -209,7 +205,7 @@ a:visited {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    padding: 2rem 1rem;
+    padding: 0rem 1rem;
     margin-bottom: 60vh; /* 写真の高さ分あける */
 }
 
@@ -233,6 +229,7 @@ a:visited {
     width: 180px; /* 好きな大きさに調整 */
     opacity: 1;
 }
+
 /*----------------------------------------*/
 
 
@@ -499,7 +496,7 @@ a:visited {
   display: grid;
   grid-template-columns: 1fr 1fr; /* 左右二等分 */
   padding: 24px;
-  overflow: hidden;
+  overflow: visible; /* ← これが重要！ */
 
   font-family: "Noto Sans JP", "Noto Sans", sans-serif;
   color: silver;
@@ -536,6 +533,8 @@ a:visited {
   grid-template-columns: repeat(3, 1fr); /* ← 3列 */
   gap: 1rem;
   overflow-y: auto; /* ← 写真側だけスクロール */
+  max-height: 97vh; /* ← 必須：高さを決める */
+  padding-right: 1rem; /* ← スクロールバー分の余白 */
 }
 
 .detail-gallery img {
@@ -544,6 +543,25 @@ a:visited {
   object-fit: cover;
   cursor: pointer;
 }
+
+/*---------スクロールバー---------------*/
+.detail-gallery::-webkit-scrollbar {
+  width: 6px;/* スクロールバーの太さ */
+}
+
+.detail-gallery::-webkit-scrollbar-track {
+  background: transparent;/* 背景色 */
+}
+
+.detail-gallery::-webkit-scrollbar-thumb {
+  background: whitesmoke;/* つまみ部分の色 */
+  border-radius: 3px;
+}
+
+.detail-gallery::-webkit-scrollbar-thumb:hover {
+  background: black;/* ホバー時の色 */
+}
+/*----------------------------------------*/
 
 
 }
