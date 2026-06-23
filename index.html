@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>studio1496</title>
-        <meta name="description"content="石黒　颯一朗/Soichiro Ishiguro">
+        <meta name="description"content="石黒　颯一朗/Soichiro Ishiguroの個人Webサイトです。">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     
      <!--リセットCSS-->
@@ -85,7 +85,7 @@
             return array;
         }
 
-        const selected = shuffle([...imageList]).slice(0, 5); // ランダム5枚
+        const selected = shuffle([...imageList]).slice(0, 6); // ランダム6枚
         const container = document.getElementById("random-images");
 
         selected.forEach((src, index) => {
@@ -95,7 +95,7 @@
                 img.classList.add("random-img");
 
                 // ★ ランダムサイズ（360〜720px）
-                const size = 360 + Math.random() * 180;
+                const size = 360 + Math.random() * 360;
                 img.style.width = size + "px";
 
                  // ★ 画面サイズを取得
@@ -113,11 +113,10 @@
                 img.style.top = top + "px";
 
                 container.appendChild(img);
-            }, index * 500); // ← 0.3秒ごとに“パッ”と出る
+            }, index * 300); // ← 0.3秒ごとに“パッ”と出る
         });
         /*------------------------------------------------------*/
 
         </script>
-
     </body>
 </html>
