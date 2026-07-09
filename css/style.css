@@ -1,6 +1,7 @@
 @charset "UTF-8";
-/* 共通部分
-----------------*/
+/* =========================
+   共通
+========================= */
 html{
     font-size:100%;
 }
@@ -15,19 +16,13 @@ a{
 img{
     max-width: 100%;
 }
-/* レイアウト */
-.align-senter{
-    text-align: center;
-}
 
 :root {
   --header-height: 80px;
 }
 
-/* ヘッダー
-----------------------------*/
 /* =========================
-   共通スタイル
+   ヘッダー（共通構造）
 ========================= */
 .page-header{
     padding-top: 1rem;
@@ -39,14 +34,6 @@ img{
 .page-header nav {
     justify-self: end;
 }
-
-.container {
-    max-width: 2000px;
-    margin: 0 auto;
-    padding:0 1rem;   /* ← main と同じ余白 */
-    box-sizing: border-box;
-}
-
 .page-header h1 {
     padding-left: 1rem; /* ← スライダーと同じ余白を追加 */
 }
@@ -73,7 +60,6 @@ img{
     gap: 2.5rem;
     font-size: 1.2rem;
     list-style: none;
-    padding-right: 1rem;
 }
 
 .main-nav a{
@@ -90,10 +76,104 @@ img{
     background-color: blue;
     color: blue;
 }
+/* =========================
+   ギャラリー（共通構造）
+========================= */
+.gallery {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr); /* スマホは1列 */
+      gap: 15px;
+      padding: 1rem 0rem;
+  }
 
-.gallery .item {
+.gallery img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery .item{
     position: relative;
 }
+
+.gallery .title{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    padding: 0.05em .2em;
+    background: lightgray;
+    color: blue;
+    font-size: 1rem;
+    font-family: "meiryo";
+    letter-spacing: 0.1em;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 2s ease;
+    pointer-events: none;
+}
+
+.gallery .title.show{
+    opacity: 3;
+}
+
+/* =========================
+   about（共通構造）
+========================= */
+.about-img-fixed {
+   position: fixed;
+    bottom: 0;
+    left: 50%;                 /* 画面の中央に基準を置く */
+    transform: translateX(-50%); /* 要素自身の幅の半分だけ左に戻す */
+    width: 80%;
+    padding: 1rem 3rem;
+    box-sizing: border-box;
+    z-index: -1;
+}
+
+.about-two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 0rem 1rem;
+    margin-bottom: 60vh; /* 写真の高さ分あける */
+}
+
+.about-two-columns .col p {
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+/* =========================
+   index（共通構造）
+========================= */
+#random-images {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* 1画面に収める */
+    overflow: hidden;
+}
+
+.random-img {
+    position: absolute;
+    width: 180px; /* 好きな大きさに調整 */
+    opacity: 1;
+}
+
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* ================================================== */
+
+.container {
+    max-width: 2000px;
+    margin: 0 auto;
+    padding:0 1rem;   /* ← main と同じ余白 */
+    box-sizing: border-box;
+}
+
 
 .header-inner {
   display: flex;
@@ -130,48 +210,6 @@ a:visited {
 }
 
 
-/* ハンバーガー（PCでは非表示） */
-.hamburger {
-    display: none;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 10px;
-}
-
-/* ギャラリー（スマホデフォルト） */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr); /* スマホは1列 */
-    gap: 15px;
-    padding: 1rem;
-}
-
-.gallery img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    display: block;
-}
-
-.gallery .item{
-    position: relative;
-}
-
-.gallery .title{
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    padding: 0.05em .2em;
-    background: lightgray;
-    color: blue;
-    font-size: 1rem;
-    font-family: "meiryo";
-    letter-spacing: 0.1em;
-    line-height: 1;
-    opacity: 0;
-    transition: opacity 2s ease;
-    pointer-events: none;
-}
 .item.preparing::after {
     content: "";
     position: absolute;
@@ -184,70 +222,36 @@ a:visited {
     pointer-events: none;
 }
 
-.gallery .title.show{
-    opacity: 3;
-}
-
-/*--------aboutページ--------------------*/
-
-.about-img-fixed {
-   position: fixed;
-    bottom: 0;
-    left: 50%;                 /* 画面の中央に基準を置く */
-    transform: translateX(-50%); /* 要素自身の幅の半分だけ左に戻す */
-    width: 80%;
-    padding: 1rem 3rem;
-    box-sizing: border-box;
-    z-index: -1;
-}
-
-.about-two-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    padding: 0rem 1rem;
-    margin-bottom: 60vh; /* 写真の高さ分あける */
-}
-
-.about-two-columns .col p {
-    line-height: 1.8;
-    white-space: pre-line;
-}
-
-/*---------------------------------------*/
-
-/*-----------indexページ------------------*/
-#random-images {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* 1画面に収める */
-    overflow: hidden;
-}
-
-.random-img {
-    position: absolute;
-    width: 180px; /* 好きな大きさに調整 */
-    opacity: 1;
-}
-
-.no-scroll {
-    overflow: hidden;
-    height: 100vh;
-}
-
-/*----------------------------------------*/
-
-
 /* =========================
    スマホ用（768px以下）
 ========================= */
 @media (max-width: 768px) {
+  main {
+    padding: 0 1rem;
+  }
+  /* スマホではスクロールを抑えるページがあるための基礎 */
+  body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+  /*------------------------- ヘッダー（スマホ） -----------------------*/
+  .page-header {
+      display: flex;
+      align-items: center;     /* ← ベースラインを揃える */
+      justify-content: space-between;
+      padding: 0 1rem;
+      position: relative;
+  }
+
+  /* 左：studio1496 */
+  .page-header h1 {
+      padding-left: 0;
+      margin: 0;
+  }
 
   .hamburger {
     display: block;
-    position: absolute;
-    right: 20px;
-    top: 8px;
+    position: static;
     z-index: 1001;
     font-size:2rem;
     cursor: pointer;
@@ -280,8 +284,8 @@ a:visited {
 
   .close-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 0.2rem;
+    right: 1rem;
     font-size: 2rem;
     cursor: pointer;
     color: gray;
@@ -296,23 +300,10 @@ a:visited {
     display: none;
   }
 
-  .essay{
-    max-width: 736px;
-    padding: 0 1.5rem;
-    margin: 3rem auto 0;
-    font-family: "Yu Gothic Bold", sans-serif;
-    font-weight:500;
-    color: blue;
-  }
+  /*---------------------------------------------*/
 
-  .essay i {
-    margin-bottom: 3rem;
-    color: blue;
-    font-family: "Yu Gothic Medium", sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-  }
 
+  /*なにこれ保留
   .quote {
     border-left: .1px solid gray;
     padding-left: 1rem;
@@ -323,6 +314,24 @@ a:visited {
   .source{
     font-size: .8rem;
     font-style: normal;
+  }
+  */
+  /*---------------index--------------------------*/
+  /* index のランダム画像（スマホ用に縮小） */
+  #random-images {
+      height: 100vh;
+      overflow: hidden;
+  }
+
+  .random-img {
+      width: 100px; /* ← スマホは小さめに */
+  }
+
+  /*---------------gallery------------------------*/
+  .gallery {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr); /* スマホは1列 */
+      gap: 15px;
   }
 
   .item.preparing::after {
@@ -354,10 +363,180 @@ a:visited {
     letter-spacing: 0.1em;
   }
 
+  /*---------------works--------------------------*/
+  /* スマホではPC用を消す */
+  .pc-only {
+        display: none !important;
+  }
+
+  /* 作品ページ全体の高さを1画面に収める */
+  .double-slider {
+    height: calc(100dvh - var(--header-height) - 3px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0rem;
+    box-sizing: border-box;
+  }
+
+  /* ヘッダー内のタイトルは非表示にする */
+  .page-header #work-title {
+    display: none;
+  }
+
+   /* スマホ作品ページ用タイトルを表示 */
+  #work-title-mobile {
+    display: block;
+    text-align: center;
+    margin: 0rem;
+    font-size: 1rem;
+    letter-spacing: 0.5em;
+    color: gray;
+    z-index: 10;
+  }
+
+  .slider-images {
+  display: grid;
+  grid-template-rows: auto auto auto auto auto;
+  gap: 0.5rem;               /* double-slider 内で完結 */
+  }
+
+  .swipe-area-top,
+  .swipe-area-bottom {
+      width: 100%;
+      height: 100%;
+  }
+
+  .swipe-area-top img,
+  .swipe-area-bottom img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;   /* ← ここを cover から contain に変更 */
+    background-color: #fff; /* 黒背景にしたい場合（任意） */
+  }
+
+  .dots-mobile-top,
+  .dots-mobile-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+
+  /* スマホ用ドット */
+  .dots-mobile-top,
+  .dots-mobile-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .dots-mobile-top span,
+  .dots-mobile-bottom span {
+    width: 4px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 0%;
+  }
+
+  .dots-mobile-top span.active,
+  .dots-mobile-bottom span.active {
+    background: gray;
+  }
+
+  /* 下のナビ（×、＋、ドット）は非表示 */
+  .slider-nav,
+  .close-btn2,
+  .next-btn {
+      display: none !important;
+  }
+
+  /*-----------------スライドパネル------------------------------*/
+  .detail-panel {
+    height: 45vh;
+    left: 0;
+    position: fixed;
+    bottom: -45hv; /* ← 初期状態は画面外 */
+    width: 100%;
+    background: blue;
+    transition: bottom 0.4s ease;
+    z-index: 10001; /* フルスクリーン画像より上 */
+  }
+
+  .detail-panel.show {
+    bottom: 0;
+  }
+
+  .detail-content {
+    display: grid;
+    overflow: visible; /* ← これが重要！ */
+
+    font-family: "Noto Sans JP", "Noto Sans", sans-serif;
+    color: silver;
+    line-height: 1.9;
+    letter-spacing:0.04em;
+  }
+
+  .detail-content h2 {
+    display: none;
+  }
+
+  .detail-content p {
+    font-size: 1rem;
+    white-space: pre-line; /* ← 改行をそのまま反映 */
+    padding: 0 1rem;
+  }
+
+  .detail-text {
+    overflow-y: auto; /* ← 文章が長くてもスクロール */
+  }
+
+  .panel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* 初期は非表示 */
+    z-index: 10000; /* パネルの下、画像の上 */
+  }
+
+  .detail-gallery,
+  .detail-gallery img  {
+    display: none;
+  }
+
+  /*---------スクロールバー---------------*/
+  .detail-gallery::-webkit-scrollbar {
+    width: 3px;/* スクロールバーの太さ */
+  }
+
+  .detail-gallery::-webkit-scrollbar-track {
+    background: transparent;/* 背景色 */
+  }
+
+  .detail-gallery::-webkit-scrollbar-thumb {
+    background: whitesmoke;/* つまみ部分の色 */
+    border-radius: 3px;
+  }
+
+  .detail-gallery::-webkit-scrollbar-thumb:hover {
+    background: black;/* ホバー時の色 */
+  }
+
+  /*------------------------ about（スマホ）----------------------- */
+  .about-two-columns {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 0rem;
+      margin-bottom: 40vh;
+  }
+
+  .about-img-fixed {
+      width: 100%;
+      padding: 1rem;
+  }
 }
-
-/* =========================*/
-
 
 /* =========================
    PC用（768px以上）
@@ -374,8 +553,23 @@ a:visited {
   .gallery {
       grid-template-columns: repeat(3, 1fr); /* ← PCは3列 */
   }
+  .hamburger{
+    display: none;
+  }
 
 /*お試し新UI---------------------------------------------------*/
+#work-title-mobile,
+.dots-mobile-top,
+.dots-mobile-bottom,
+.swipe-area-top,
+.swipe-area-bottom{
+    display: none;
+}
+/* PCではスマホ用を消す */
+.mobile-only {
+    display: none !important;
+}
+
 .double-slider {
   height: calc(100vh - var(--header-height));
   display: flex;
@@ -567,8 +761,6 @@ a:visited {
   background: black;/* ホバー時の色 */
 }
 /*----------------------------------------*/
-
-
 }
 /*------------------------------------------*/
 
