@@ -286,30 +286,40 @@
             function addSwipe(el, images, getIndex, setIndex, updateSrc, dots) {
                 let startX = 0;
                 let currentX = 0;
+                let isSwiping = false; // ← スワイプしたかどうかのフラグ
 
                 el.addEventListener('touchstart', e => {
                     startX = e.touches[0].clientX;
+                    currentX = startX;
+                    isSwiping = false; // ← 毎回リセット
                 });
 
                 el.addEventListener('touchmove', e => {
                     currentX = e.touches[0].clientX;
+
+                    // ここで「スワイプ開始」を判定する
+                    if (Math.abs(currentX - startX) > 20) {
+                        isSwiping = true; // ← 20px以上動いたらスワイプ扱い
+                    }
                 });
 
                 el.addEventListener('touchend', () => {
-                    const diff = startX - currentX;
-                    let index = getIndex();
-                    const SWIPE_THRESHOLD = 120; // ← ここは好みで 100〜150 が最適
+                    // スワイプしていないなら何もしない（タップ無効化）
+                    if (!isSwiping) return;
 
-                    // スワイプ判定
+                    const diff = startX - currentX;
+                    const SWIPE_THRESHOLD = 120;
+
+                    let index = getIndex();
+
                     if (diff > SWIPE_THRESHOLD) {
                         index = (index + 1) % images.length;
                     } else if (diff < -SWIPE_THRESHOLD) {
                         index = (index - 1 + images.length) % images.length;
                     } else {
-                        return; // ← これが超重要：タップは何もしない
+                        return; // ← 閾値未満なら何もしない
                     }
 
-                    // スワイプが成立したときだけ更新
                     setIndex(index);
                     updateSrc(images[index]);
                     updateDots(dots, index);
