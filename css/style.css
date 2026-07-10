@@ -35,9 +35,6 @@ img{
 .page-header nav {
     justify-self: end;
 }
-.page-header h1 {
-    padding-left: 1rem; /* ← スライダーと同じ余白を追加 */
-}
 
 .align-center a {
     font-family: "Noto Sans JP", sans-serif;
@@ -133,23 +130,10 @@ img{
 /* =========================
    about（共通構造）
 ========================= */
-.about-img-fixed {
-   position: fixed;
-    bottom: 0;
-    left: 50%;                 /* 画面の中央に基準を置く */
-    transform: translateX(-50%); /* 要素自身の幅の半分だけ左に戻す */
-    width: 80%;
-    padding: 1rem 3rem;
-    box-sizing: border-box;
-    z-index: -1;
-}
-
-.about-two-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    padding: 0rem 1rem;
-    margin-bottom: 60vh; /* 写真の高さ分あける */
+.about-img {
+  position: static;      /* 固定を完全に解除 */
+  display: block;        /* ブロック要素にする */
+  margin: 10rem auto;     /* 中央寄せ＋上下余白 */
 }
 
 .about-two-columns .col p {
@@ -285,7 +269,7 @@ a:visited {
     flex-direction: column;
     gap: 2rem;
     padding-top: 80px;
-    padding-left: 20px;
+    padding-left: 1rem;
     text-align: left;
     transition: right 0.25s ease;
     z-index: 1000;
@@ -517,16 +501,11 @@ a:visited {
   }
 
   /*------------------------ about（スマホ）----------------------- */
-  .about-two-columns {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      padding: 0rem;
-      margin-bottom: 40vh;
+  .about-page {
+    height: calc(100vh - var(--header-height) - var(--footer-height));
   }
-
-  .about-img-fixed {
-      width: 100%;
-      padding: 1rem;
+  .about-two-columns {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -549,7 +528,7 @@ a:visited {
     display: none;
   }
 
-  footer {
+  .footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -561,6 +540,13 @@ a:visited {
     line-height: var(--footer-height);
     z-index: 9999;
   }
+
+/*--------------------about--------------------------------*/
+.about-two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 /*お試し新UI---------------------------------------------------*/
 #work-title-mobile,
 .dots-mobile-top,
