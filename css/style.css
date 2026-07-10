@@ -81,7 +81,7 @@ img{
   height: var(--footer-height);
   line-height: var(--footer-height);
   text-align: center;
-  background: #fff;
+  background: transparent;
   color: #ccc;
   font-size: 0.75rem;
 }
