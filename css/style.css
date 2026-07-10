@@ -133,7 +133,7 @@ img{
 .about-img {
   position: static;      /* 固定を完全に解除 */
   display: block;        /* ブロック要素にする */
-  margin: 10rem auto;     /* 中央寄せ＋上下余白 */
+  margin: 5rem auto;     /* 中央寄せ＋上下余白 */
 }
 
 .about-two-columns .col p {
