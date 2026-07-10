@@ -314,14 +314,18 @@
                 el.addEventListener('touchend', () => {
                     const diff = startX - currentX;
                     let index = getIndex();
+                    const SWIPE_THRESHOLD = 120; // ← ここは好みで 100〜150 が最適
 
-                    if (diff > 50) {
+                    // スワイプ判定
+                    if (diff > SWIPE_THRESHOLD) {
                         index = (index + 1) % images.length;
-                    } else if (diff < -50) {
+                    } else if (diff < -SWIPE_THRESHOLD) {
                         index = (index - 1 + images.length) % images.length;
+                    } else {
+                        return; // ← これが超重要：タップは何もしない
                     }
-                    
 
+                    // スワイプが成立したときだけ更新
                     setIndex(index);
                     updateSrc(images[index]);
                     updateDots(dots, index);

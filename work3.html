@@ -11,48 +11,120 @@
      <!--オリジナル<CSS-->
         <link rel="stylesheet" href="css/style.css">
 
+       <link rel="icon" type="image/png" href="favicon.png">
+ 
 
     </head>
     <body>
-        <header class="page-header">
-            <h1 class="align-center">
-                <a href="index.html">studio1496</a>
-            </h1>
-            
-            <nav>
-                <ul class="main-nav font-english" id="main-nav">
-                    <li class="close-btn" id="close-btn">×</li>
-                    <li><a href="works.html">Works</a></li>
-                    <!--
-                    <li><a href="texts.html">Texts</a></li>
-                    -->
-                    <!--
-                    <li><a href="cameraroll.html">Camera Roll</a></li>
-                    -->
-                    <!--
-                    <li><a href="about.html">About</a></li>
-                    -->
-                </ul>
+        <div class="header-container">
+            <header class="page-header">
+                <h1 class="align-center">
+                    <a href="index.html">studio1496</a>
+                </h1>
+                
+                <span class="title" id="work-title">廃墟の構築</span>
 
-                <div class="hamburger" id="hamburger">+</div>
-            </nav>
-        </header>
+                <nav>
+                    <ul class="main-nav font-english" id="main-nav">
+                        <li class="close-btn" id="close-btn">×</li>
+                        <li><a href="works.html">Works</a></li>
+                        <!--
+                        <li><a href="texts.html">Texts</a></li>
+                        -->
+                        <!--
+                        <li><a href="cameraroll.html">Camera Roll</a></li>
+                        -->
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+
+                    <div class="hamburger" id="hamburger">+</div>
+                </nav>
+            </header>
+        </div>
 
         <main>
-            <h2 class="work-n-title">
-                窓の集落
-            </h2>
-            <div class="work-text">
-                テキスト準備中
+            <div class="double-slider">
+                <div class="slider-images mobile-only">
+                    <div class="swipe-area-top">
+                        <img id="left-img" src="images/work1/img1.jpg" loading="lazy">
+                    </div>
+                        <!-- ★ ドット（上） -->
+                    <div class="dots-mobile-top"></div>
+                    <div id="work-title-mobile">廃墟の構築</div>
+                    <!-- ★ ドット（下） -->
+                    <div class="dots-mobile-bottom"></div>
+                    <div class="swipe-area-bottom">
+                        <img id="right-img" src="images/work1/img2.jpg" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="slider-images pc-only">
+                    <img id="pc-left-img" src="images/work1/img1.jpg" loading="lazy">
+                    <img id="pc-right-img" src="images/work1/img2.jpg" loading="lazy">
+                </div>
+
+                <div class="slider-nav">
+                    <span class="close-btn2">
+                        <a href="works.html">×</a>
+                    </span>
+                    <div class="dots" id="dots"></div>
+                    <span class="next-btn" id="next-btn">＋</span>
+                </div>
+
             </div>
-                <img src="images/work3/img1.jpg" class="work-image" loading="lazy">
-                <img src="images/work3/img2.png" class="work-image" loading="lazy">
-                <img src="images/work3/img3.jpg" class="work-image" loading="lazy">
-                <img src="images/work3/img4.png" class="work-image" loading="lazy">
+
+            <div id="fullscreen-modal" class="fullscreen-modal">
+                <img id="fullscreen-img" src="">
+            </div>
+            <!---------------作品タイトルスライドパネル-------------->
+            <div id="detail-panel" class="detail-panel">
+                <div class="detail-content">
+                    <div class="detail-text">
+                        <h2>廃墟の構築</h2>
+                        <p>
+                            テキスト準備中。
+                            敷地 : 有栖川宮記念公園
+                            用途 : 複合型図書館
+                            修士設計
+                            備考 : 2025年度JIA修士設計展出展作品
+                        </p>
+                    </div>
+                    <!---------------スライドパネル写真ギャラリー-------------->
+                    <div class="detail-gallery">
+                        <img src="images/work1/thumb/img1.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img2.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img3.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img4.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img5.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img6.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img7.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img8.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img9.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img10.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img11.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img12.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img13.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img14.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img15.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img16.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img17.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img18.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img19.jpg" loading="lazy">
+                        <img src="images/work1/thumb/img20.jpg" loading="lazy">
+                        <!-- 必要なだけ追加 -->
+                    </div>
+                    <!---------------スライドパネル写真ギャラリー-------------->
+                </div>
+            </div>
+            <div id="panel-overlay" class="panel-overlay"></div>
+            <footer class="footer">
+                © 2026 studio1496
+            </footer>
+            <!------------------------------------------------------->
         </main>
     </body>
     
- <script>
+    <script>
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('main-nav');
         const closeBtn = document.getElementById('close-btn');
@@ -63,5 +135,384 @@
             nav.classList.remove('active');
         });
     </script>
-  </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+
+        // ★ セットを番号で定義（ここだけ編集すればOK）
+        const imageSets = [
+            [1,2],
+            [3,2],
+            [3,4],
+            [5,4],
+            [5,6],
+            [7,6],
+            [7,8],
+            [9,8],
+            [9,10],
+            [11,10],
+            [11,12],
+            [13,12],
+            [13,14],
+            [15,14],
+            [15,16],
+            [17,16],
+            [17,18],
+            [19,18],
+            [19,20],
+            [1,20]
+        ];
+
+        const sets = imageSets.map(([l, r]) => [
+            `images/work1/img${l}.jpg`,
+            `images/work1/img${r}.jpg`
+        ]);
+
+        let index = 0;
+
+        const leftImg = document.getElementById("pc-left-img");
+        const rightImg = document.getElementById("pc-right-img");
+        const dots = document.getElementById("dots");
+        const nextBtn = document.getElementById("next-btn");
+
+        // ドット生成
+        sets.forEach(() => {
+            const dot = document.createElement("span");
+            dots.appendChild(dot);
+        });
+
+        // ★ ドットは2つずつ進み、最後はループする
+        const updateDots = () => {
+            const allDots = dots.querySelectorAll("span");
+            const total = allDots.length;
+
+            const active1 = index % total;
+            const active2 = (index + 1) % total;
+
+            allDots.forEach((d, i) => {
+            d.classList.toggle("active", i === active1 || i === active2);
+            });
+        };
+
+        nextBtn.addEventListener("click", () => {
+            index = (index + 1) % sets.length;
+            updateImages();
+            updateDots();
+        });
+
+        const updateImages = () => {
+            const newLeft = sets[index][0];
+            const newRight = sets[index][1];
+
+            const currentLeft = leftImg.src.split("/").pop();
+            const currentRight = rightImg.src.split("/").pop();
+
+            const nextLeft = newLeft.split("/").pop();
+            const nextRight = newRight.split("/").pop();
+
+            const DELAY = 700; // ← ★ここで「間」を調整（ms）
+
+            // 左が変わるとき
+            if (currentLeft !== nextLeft) {
+                leftImg.style.opacity = "0"; // まず透明にする（背景だけになる）
+
+                setTimeout(() => {
+                const preload = new Image();
+                preload.src = newLeft;
+
+                preload.onload = () => {
+                    leftImg.src = newLeft;     // 読み込み完了後に差し替え
+                    leftImg.style.opacity = "1"; // ここで初めて表示
+                };
+                }, DELAY); // ← ★透明のまま待つ時間
+            }
+
+            // 右が変わるとき
+            if (currentRight !== nextRight) {
+                rightImg.style.opacity = "0";
+
+                setTimeout(() => {
+                const preload = new Image();
+                preload.src = newRight;
+
+                preload.onload = () => {
+                    rightImg.src = newRight;
+                    rightImg.style.opacity = "1";
+                };
+                }, DELAY);
+            }
+        };
+        updateDots();
+
+        //--------------------スマホ用ドット-------------------------------
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            // 作品フォルダ名
+            const folder = "images/work1/";
+
+            // フォルダ内の画像枚数
+            const imageCount = 20;
+
+            // フォルダ内の画像を自動生成
+            const allImages = [];
+            for (let i = 1; i <= imageCount; i++) {
+                allImages.push(`${folder}img${i}.jpg`);
+            }
+
+            // 奇数 → 上
+            const topImages = allImages.filter((_, i) => i % 2 === 0);
+            // 偶数 → 下
+            const bottomImages = allImages.filter((_, i) => i % 2 === 1);
+
+            // DOM取得
+            const topImg = document.getElementById('left-img');
+            const bottomImg = document.getElementById('right-img');
+
+            let topIndex = 0;
+            let bottomIndex = 0;
+
+            // 初期表示
+            topImg.src = topImages[topIndex];
+            bottomImg.src = bottomImages[bottomIndex];
+
+            // ドット生成
+            const dotsTop = document.querySelector('.dots-mobile-top');
+            const dotsBottom = document.querySelector('.dots-mobile-bottom');
+
+            topImages.forEach((_, i) => {
+                const dot = document.createElement('span');
+                if (i === 0) dot.classList.add('active');
+                dotsTop.appendChild(dot);
+            });
+
+            bottomImages.forEach((_, i) => {
+                const dot = document.createElement('span');
+                if (i === 0) dot.classList.add('active');
+                dotsBottom.appendChild(dot);
+            });
+
+            const topDots = dotsTop.querySelectorAll('span');
+            const bottomDots = dotsBottom.querySelectorAll('span');
+
+            // ドット更新関数
+            function updateDots(dots, index) {
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+            }
+
+            // スワイプ処理（el を正しく使う）
+            function addSwipe(el, images, getIndex, setIndex, updateSrc, dots) {
+                let startX = 0;
+                let currentX = 0;
+
+                el.addEventListener('touchstart', e => {
+                    startX = e.touches[0].clientX;
+                });
+
+                el.addEventListener('touchmove', e => {
+                    currentX = e.touches[0].clientX;
+                });
+
+                el.addEventListener('touchend', () => {
+                    const diff = startX - currentX;
+                    let index = getIndex();
+                    const SWIPE_THRESHOLD = 120; // ← ここは好みで 100〜150 が最適
+
+                    // スワイプ判定
+                    if (diff > SWIPE_THRESHOLD) {
+                        index = (index + 1) % images.length;
+                    } else if (diff < -SWIPE_THRESHOLD) {
+                        index = (index - 1 + images.length) % images.length;
+                    } else {
+                        return; // ← これが超重要：タップは何もしない
+                    }
+
+                    // スワイプが成立したときだけ更新
+                    setIndex(index);
+                    updateSrc(images[index]);
+                    updateDots(dots, index);
+                });
+            }
+
+            // 上のスワイプ（img ではなくラッパーに付ける）
+            addSwipe(
+                document.querySelector('.swipe-area-top'),
+                topImages,
+                () => topIndex,
+                i => topIndex = i,
+                src => topImg.src = src,
+                topDots
+            );
+
+            // 下のスワイプ
+            addSwipe(
+                document.querySelector('.swipe-area-bottom'),
+                bottomImages,
+                () => bottomIndex,
+                i => bottomIndex = i,
+                src => bottomImg.src = src,
+                bottomDots
+            );
+        }
+
+        ///-------------------------------------///
+
+        const modal = document.getElementById("fullscreen-modal");
+        const modalImg = document.getElementById("fullscreen-img");
+        
+        // 左画像クリックでフルスクリーン
+        leftImg.addEventListener("click", () => {
+            modal.style.display = "flex";
+
+            modalImg.classList.remove("show"); // 透明に戻す
+            modalImg.src = leftImg.src;
+
+            requestAnimationFrame(() => {
+                modalImg.classList.add("show"); // フェードイン
+            });
+        });
+
+        // 右画像クリックでフルスクリーン
+        rightImg.addEventListener("click", () => {
+            modal.style.display = "flex";
+
+            modalImg.classList.remove("show");
+            modalImg.src = rightImg.src;
+
+            requestAnimationFrame(() => {
+                modalImg.classList.add("show");
+            });
+        });
+
+        // 画像クリックで拡大・縮小（閉じるイベントを止める）
+        modalImg.addEventListener("click", (e) => {
+            e.stopPropagation();
+
+            const rect = modalImg.getBoundingClientRect();
+
+            // クリック位置（画像内の相対座標）
+            const offsetX = e.clientX - rect.left;
+            const offsetY = e.clientY - rect.top;
+
+            // 画像内の割合（0〜1）
+            const xRatio = offsetX / rect.width;
+            const yRatio = offsetY / rect.height;
+
+            const scale = 2; // 拡大倍率
+
+            if (!modalImg.classList.contains("zoomed")) {
+                // 拡大する時の補正
+                const moveX = (xRatio - 0.5) * rect.width * (scale - 1);
+                const moveY = (yRatio - 0.5) * rect.height * (scale - 1);
+
+                modalImg.style.transform = `translate(${-moveX}px, ${-moveY}px) scale(${scale})`;
+                modalImg.classList.add("zoomed");
+            } else {
+                // 元に戻す
+                modalImg.style.transform = "";
+                modalImg.classList.remove("zoomed");
+            }
+        });
+
+        // クリックで閉じる（元の動き）
+        modal.addEventListener("click", () => {
+            modal.style.display = "none";
+            modalImg.classList.remove("show"); // 次回のために透明に戻す
+        });
+
+        // ----------------------作品タイトルスライドパネル---------------------------
+        const titleBtn = document.getElementById("work-title");
+        const detailPanel = document.getElementById("detail-panel");
+        const overlay = document.getElementById("panel-overlay");
+
+        titleBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            detailPanel.classList.add("show");
+            overlay.style.display = "block";
+
+            // ★ タイトルを青く固定
+            titleBtn.classList.add("active");
+        });
+
+        overlay.addEventListener("click", () => {
+            detailPanel.classList.remove("show");
+            overlay.style.display = "none";
+
+            // ★ 青固定を解除
+            titleBtn.classList.remove("active");
+        });
+
+        overlay.addEventListener("click", () => {
+            detailPanel.classList.remove("show");
+            overlay.style.display = "none";
+        });
+
+        // スマホ用タイトル
+        const titleBtnMobile = document.getElementById("work-title-mobile");
+
+        if (titleBtnMobile) {
+            titleBtnMobile.addEventListener("click", (e) => {
+                e.stopPropagation();
+                detailPanel.classList.add("show");
+                overlay.style.display = "block";
+            });
+        }
+
+
+        // 事前読み込み
+        const galleryImages = [
+            "images/work1/thumb/img1.jpg",
+            "images/work1/thumb/img2.jpg",
+            "images/work1/thumb/img3.jpg",
+            "images/work1/thumb/img4.jpg",
+            "images/work1/thumb/img5.jpg",
+            "images/work1/thumb/img6.jpg",
+            "images/work1/thumb/img7.jpg",
+            "images/work1/thumb/img8.jpg",
+            "images/work1/thumb/img9.jpg",
+            "images/work1/thumb/img10.jpg",
+            "images/work1/thumb/img11.jpg",
+            "images/work1/thumb/img12.jpg",
+            "images/work1/thumb/img13.jpg",
+            "images/work1/thumb/img14.jpg",
+            "images/work1/thumb/img15.jpg",
+            "images/work1/thumb/img16.jpg",
+            "images/work1/thumb/img17.jpg",
+            "images/work1/thumb/img18.jpg"
+            ];
+
+            galleryImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
+            });
+        // ----------------------------事前読み込み
+
+        // detail-gallery の画像クリックでスライダーへジャンプ
+        document.querySelectorAll(".detail-gallery img").forEach((thumb) => {
+            thumb.addEventListener("click", () => {
+                const clickedSrc = thumb.src.split("/").pop(); // ファイル名だけ取得
+
+                // どのセットに含まれているか探す
+                const targetIndex = sets.findIndex(([left, right]) => {
+                    return left.includes(clickedSrc) || right.includes(clickedSrc);
+                });
+
+                if (targetIndex !== -1) {
+                    index = targetIndex;   // スライダーの現在位置を更新
+                    updateImages();        // 画像更新
+                    updateDots();          // ドット更新
+                }
+
+                // スライドパネルを閉じる（任意）
+                detailPanel.classList.remove("show");
+                overlay.style.display = "none";
+
+                // ★ ここが重要：青固定を解除
+                titleBtn.classList.remove("active");
+
+            });
+        });
+        //----------------画像クリックでスライダーへジャンプ
+
+
+        });
+    </script>
 </html>
