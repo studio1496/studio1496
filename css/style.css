@@ -18,7 +18,8 @@ img{
 }
 
 :root {
-  --header-height: 80px;
+  --header-height: 3.5rem;
+  --footer-height: 3rem;
 }
 
 /* =========================
@@ -76,6 +77,18 @@ img{
     background-color: blue;
     color: blue;
 }
+/* =========================
+   フッター（共通構造）
+========================= */
+.footer {
+  height: var(--footer-height);
+  line-height: var(--footer-height);
+  text-align: center;
+  background: #fff;
+  color: #ccc;
+  font-size: 0.75rem;
+}
+
 /* =========================
    ギャラリー（共通構造）
 ========================= */
@@ -268,7 +281,7 @@ a:visited {
     right: -100%;
     width: 100%;
     height: 100vh;
-    background: navy;
+    background: #ccc;
     flex-direction: column;
     gap: 2rem;
     padding-top: 80px;
@@ -301,30 +314,16 @@ a:visited {
   }
 
   /*---------------------------------------------*/
-
-
-  /*なにこれ保留
-  .quote {
-    border-left: .1px solid gray;
-    padding-left: 1rem;
-    margin: 1rem 0;
-    font-style: italic;
-  }
-
-  .source{
-    font-size: .8rem;
-    font-style: normal;
-  }
-  */
   /*---------------index--------------------------*/
   /* index のランダム画像（スマホ用に縮小） */
   #random-images {
       height: 100vh;
       overflow: hidden;
+      padding : 1rem;
   }
 
   .random-img {
-      width: 100px; /* ← スマホは小さめに */
+      width: 50px; /* ← スマホは小さめに */
   }
 
   /*---------------gallery------------------------*/
@@ -371,8 +370,8 @@ a:visited {
 
   /* 作品ページ全体の高さを1画面に収める */
   .double-slider {
-    height: calc(100dvh - var(--header-height) - 3px);
-    overflow: hidden;
+    height: calc(100dvh - var(--header-height) - var(--footer-height));
+    overflow: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -390,8 +389,8 @@ a:visited {
     display: block;
     text-align: center;
     margin: 0rem;
-    font-size: 1rem;
-    letter-spacing: 0.5em;
+    font-size: 0.75rem;
+    letter-spacing: 0.75rem;
     color: gray;
     z-index: 10;
   }
@@ -414,13 +413,6 @@ a:visited {
     aspect-ratio: 1 / 1;
     object-fit: contain;   /* ← ここを cover から contain に変更 */
     background-color: #fff; /* 黒背景にしたい場合（任意） */
-  }
-
-  .dots-mobile-top,
-  .dots-mobile-bottom {
-    display: flex;
-    justify-content: center;
-    gap: 0.3rem;
   }
 
   /* スマホ用ドット */
@@ -453,10 +445,10 @@ a:visited {
 
   /*-----------------スライドパネル------------------------------*/
   .detail-panel {
-    height: 45vh;
+    height: 50dvh;
     left: 0;
     position: fixed;
-    bottom: -45hv; /* ← 初期状態は画面外 */
+    bottom: -50dvh; /* ← 初期状態は画面外 */
     width: 100%;
     background: blue;
     transition: bottom 0.4s ease;
@@ -557,6 +549,18 @@ a:visited {
     display: none;
   }
 
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--footer-height);
+    background: #fff;
+    color: #ccc;
+    text-align: center;
+    line-height: var(--footer-height);
+    z-index: 9999;
+  }
 /*お試し新UI---------------------------------------------------*/
 #work-title-mobile,
 .dots-mobile-top,
@@ -571,7 +575,7 @@ a:visited {
 }
 
 .double-slider {
-  height: calc(100vh - var(--header-height));
+  height: calc(100vh - var(--header-height) - var(--footer-height));
   display: flex;
   flex-direction: column;
   justify-content: space-between;
