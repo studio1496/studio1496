@@ -50,7 +50,11 @@
                     </div>
                         <!-- ★ ドット（上） -->
                     <div class="dots-mobile-top"></div>
-                    <div id="work-title-mobile">廃墟の構築</div>
+                    <div class="mobile-title-bar mobile-only">
+                        <span class="close-btn2-mobile">×</span>
+                            <div id="work-title-mobile">アルルに住むように</div>
+                        <span class="next-btn-mobile">＋</span>
+                    </div>
                     <!-- ★ ドット（下） -->
                     <div class="dots-mobile-bottom"></div>
                     <div class="swipe-area-bottom">
@@ -361,6 +365,19 @@
                 src => bottomImg.src = src,
                 bottomDots
             );
+
+            // ★ スマホ用 next-btn（＋）で上下の画像を進める
+            const nextBtnMobile = document.querySelector(".next-btn-mobile");
+
+            nextBtnMobile.addEventListener("click", () => {
+                topIndex = (topIndex + 1) % topImages.length;
+                topImg.src = topImages[topIndex];
+                updateDots(topDots, topIndex);
+
+                bottomIndex = (bottomIndex + 1) % bottomImages.length;
+                bottomImg.src = bottomImages[bottomIndex];
+                updateDots(bottomDots, bottomIndex);
+            });
         }
 
         ///-------------------------------------///
