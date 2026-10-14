@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>studio1496</title>
+        <meta name="description"content="石黒　颯一朗/Soichiro Ishiguro">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     <!--リセットCSS-->
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+     <!--オリジナル<CSS-->
+        <link rel="stylesheet" href="css/style.css">
+
+        <link rel="icon" type="image/png" href="favicon.png">
+
+
+    </head>
+    <body>
+        <div class="header-container">
+            <header class="page-header">
+                <h1 class="align-center">
+                    <a href="index.html">studio1496</a>
+                </h1>
+                
+                <span class="title" id="work-title">
+                    <a href="text1.html">Logs</a>
+                </span>
+
+                <nav>
+                    <ul class="main-nav font-english" id="main-nav">
+                        <li class="close-btn" id="close-btn">×</li>
+                        <li><a href="works.html">Works</a></li>
+                        <li><a href="texts.html">Texts</a></li>
+                        <li><a href="logs.html">Logs</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+
+                    <div class="hamburger" id="hamburger">+</div>
+                </nav>
+            </header>
+        </div>
+
+        <main>
+            <div class="logs-gallery">
+              <li><a href="logs/261010_log.html">261010_log</a></li>
+            </div>
+
+           <footer class="footer">
+                © 2026 studio1496
+            </footer>
+         </main>
+
+        <script>
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('main-nav');
+        const closeBtn = document.getElementById('close-btn');
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        closeBtn.addEventListener('click', () => {
+            nav.classList.remove('active');
+        });
+        </script>
+        <script>
+             // ▼ ギャラリーをランダムに並び替える
+        const gallery = document.getElementById('gallery');
+        const galleryitems = Array.from(gallery.children);
+
+        // Fisher-Yates シャッフル
+        for (let i = galleryitems.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [galleryitems[i],galleryitems[j]] = [galleryitems[j], galleryitems[i]];
+        }
+
+        // 並び替えた要素を再配置
+        galleryitems.forEach(item => gallery.appendChild(item));
+        </script>
+
+        <script>
+        // Intersection Observer で画面に入ったか検知
+        const items = document.querySelectorAll('.gallery .item');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const title = entry.target.querySelector('.title'); // ← 先に取得
+
+                if (entry.isIntersecting) {
+                 // 見えたら1秒後に表示
+                    setTimeout(() => {
+                        title.classList.add('show');
+                 }, 900);
+                } else {
+                 // 見えなくなったら非表示に戻す
+                 title.classList.remove('show');
+                }
+            });
+        }, { threshold: 1 });
+        items.forEach(item => observer.observe(item));
+        </script>
+
+    </body>
+</html>
